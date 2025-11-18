@@ -13,8 +13,13 @@
 <p>At power up the PIC waits for the character 'R' (for reading) or 'W' (for writing) from the computer.</p>
 
 <p>If it receives the character 'R' it sends the character 'A' as an acknowledgement after which it sends all 32K bytes from the chip which the computer saves to a file of your choosing.</p>
+<p>Crude READ diagram:</p>
+
+![Read](pic2flash-read-diagram.png)
 
 <p>If it receives the character 'W' it sends the character 'A' as an acknowledgement so that the computer knows it needs to send the bytes. The computer starts sending bytes and after each byte the PIC sends back a W to signal that it's ready for the next one then once 64 bytes have been received the PIC sends a 'G' to signal that the page has ended and a little time is needed for the flash to complete the write operation, in this time the computer waits and the PIC constantly polls the device to see if it finished writing then sends another 'G' to tell the computer to continue sending the rest of the bytes. This is repeated for 32K bytes in 64 byte pages.</p>
+
+![Write](pic2flash-write-diagram.png)
 
 # License
 
