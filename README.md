@@ -6,7 +6,7 @@
 
 # Description
 <p>I was working on my Z80 breadboard computer and didn't have a flash programmer. I was staring at an unused PIC16F917 on my desk and thought that I should just make the flash programmer myself.</p>
-<p>The basic principle is that the PIC receives the bytes over UART from a computer (through a usb to UART adapter) using its dedicated AUSART module then puts them on the 8 bit address bus connected to PORTD (respecting the timing, waiting between pages and disabling then re-enabling the software write protection). The address bus (connected on PORTA[0-7] and PORTB[0-6]) is automatically counted by the PIC without any input from the computer.</p>
+<p>The basic principle is that the PIC receives the bytes over UART from a computer (through a usb to UART adapter) using its dedicated AUSART module then puts them on the 8 bit data bus connected to PORTD (respecting the timing, waiting between pages and disabling then re-enabling the software write protection). The address bus (connected on PORTA[0-7] and PORTB[0-6]) is automatically counted by the PIC without any input from the computer.</p>
 <p>The project consists of 2 parts: the C program (pic2flash.c) which is the computer side of things and the assembly program for the PIC itself. The C program is a bit slopy as I didn't spend that much time on it so it might have some bugs which I will probably fix. Also the C program works only on *nix operating systems due to how it opens files and the UART tty.</p>
 
 # Protocol
